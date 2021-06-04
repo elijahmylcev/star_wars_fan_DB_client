@@ -39,9 +39,9 @@ export default class SwapiSevice {
     }
   }
 
-  const swapi = new SwapiSevice();
-  swapi.getAllPeople().then((people) => {
-    people.forEach(element => {
-      console.log(element.name)
-    });
-  })
+  // const swapi = new SwapiSevice();
+  // swapi.getAllPeople().then((people) => {
+  //   people.forEach(element => {
+  //     console.log(element.name)
+  //   });
+  // })
