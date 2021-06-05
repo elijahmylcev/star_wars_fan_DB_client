@@ -5,15 +5,15 @@
           <h4 class="title">{{name}}</h4>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
-              <span class="term">Population</span>
+              <span class="term">Population:</span>
               <span>{{population}}</span>
             </li>
             <li class="list-group-item">
-              <span class="term">Rotation Period</span>
+              <span class="term">Rotation Period:</span>
               <span>{{rotation_period}}</span>
             </li>
             <li class="list-group-item">
-              <span class="term">Diameter</span>
+              <span class="term">Diameter:</span>
               <span>{{diameter}}</span>
             </li>
           </ul>
@@ -84,6 +84,10 @@ export default {
     padding: 1rem;
     border-radius: 1rem;
     margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    width: 270px;
+    font-size: 1.2rem;
 }
 
 .random-planet .list-group-item .term {

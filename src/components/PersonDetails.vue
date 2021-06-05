@@ -7,15 +7,15 @@
           <h4>R2-D2</h4>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
-              <span class="term">Gender</span>
+              <span class="term">Gender:</span>
               <span>male</span>
             </li>
             <li class="list-group-item">
-              <span class="term">Birth Year</span>
+              <span class="term">Birth Year:</span>
               <span>43</span>
             </li>
             <li class="list-group-item">
-              <span class="term">Eye Color</span>
+              <span class="term">Eye Color:</span>
               <span>red</span>
             </li>
           </ul>
@@ -44,6 +44,12 @@
 
 .person-details .list-group-item {
   padding: .25rem;
+  font-size: 1.2rem;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
 }
 
 .person-details .list-group-item .term{

@@ -1,38 +1,22 @@
 <template>
     <div class="header d-flex">
-    
+        <img class="mx-5 logo" src="../assets/fight.png" alt="Img">
         <h3>
-    
             <a href="#/">
-    
-              StarDB
-    
+              Fan Star Wars DB
             </a>
-    
         </h3>
-    
         <ul class="d-flex">
-    
             <li>
-    
-                <a href="#/people">People</a>
-    
+                <a class="link-route" href="#/people">People</a>
             </li>
-    
             <li>
-    
-                <a href="#/planets">Planets</a>
-    
+                <a class="link-route" href="#/planets">Planets</a>
             </li>
-    
             <li>
-    
-                <a href="#/starships">Starships</a>
-    
+                <a class="link-route" href="#/starships">Starships</a>
             </li>
-    
         </ul>
-    
     </div>
 </template>
 
@@ -44,15 +28,51 @@ export default {
 
 <style lang="scss" scoped>
 .header {
+    height: 100px;
     margin-top: .5rem;
     padding-left: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    height: 100%;
+    animation: 3.3s linear 0s normal none infinite running rot;
+    -webkit-animation: 3.3s linear 0s normal none infinite running rot;
+    width: 100px;
+}
+
+@keyframes rot {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes rot {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+ul {
+    align-items: flex-start;
 }
 
 .header ul li {
     list-style: none;
-    margin: 0;
+    margin-right: 2rem;
     padding: .5rem 1rem;
-    border-radius: 3px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+}
+
+.link-route {
+    text-decoration: none;
 }
 
 .header ul li:hover {

@@ -25,9 +25,11 @@
 
     .item-list .list-group-item {
     cursor: pointer;
+    font-size: 1.3rem;
     }
 
     .item-list .list-group-item:hover {
     background-color: #444;
+    color: #00bc8c;
     }
 </style>
