@@ -1,6 +1,9 @@
 <template>
+
     <div class="random-planet jumbotron rounded">
-        <img class="planet-image" :src='planet.adress' alt="img"/>
+      <Spinner v-if="loading"/>
+      <div v-else class="d-flex">
+          <img class="planet-image" :src='planet.adress' alt="img"/>
         <div>
           <h4 class="title">{{planet.name}}</h4>
           <ul class="list-group list-group-flush">
@@ -19,11 +22,15 @@
           </ul>
         </div>
       </div>
+        
+
+      </div>
+
 </template>
 
 <script>
 import SwapiService from '../services/swapi-service';
-
+import Spinner from './Spinner'
 export default {
     data() {
         return {
@@ -34,9 +41,13 @@ export default {
                 rotation_period: null,
                 diameter: null,
                 adress: ''
-               } 
+               } ,
+               loading: true,
              }
         },
+    components: {
+      Spinner
+    },
     mounted() {
         setInterval(() => {
             const swap = new SwapiService();
@@ -45,6 +56,7 @@ export default {
             const id = random(2, 19);
             return swap.getPlanet(id).then((planet) => {
               this.planet = planet;
+              this.loading = false;
             })
         }, 4000);
             
@@ -55,10 +67,13 @@ export default {
 <style lang="scss" scoped>
 .random-planet {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     padding: 3rem;
     border: 5px solid #444;
     margin-bottom: 2rem;
+    position: relative;
+    min-height: 360px;
 }
 
 .title {

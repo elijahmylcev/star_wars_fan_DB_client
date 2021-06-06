@@ -2,7 +2,6 @@
   <div id="app">
     <Header />
     <RandomPlanet class="mt-5" />
-
     <div class="person row mb2">
       <div class="col-md-6">
         <ItemList />
@@ -20,12 +19,14 @@
   import RandomPlanet from './components/RandomPlanet.vue'
   import ItemList from '@/components/ItemList.vue'
   import PersonDetails from '@/components/PersonDetails.vue'
+
 export default {
   components: {
     Header,
     RandomPlanet,
     ItemList,
-    PersonDetails
+    PersonDetails,
+
   }
 }
 </script>
