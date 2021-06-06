@@ -34,9 +34,6 @@ export default {
   body {
     padding: 15px 30px;
   }
-  RandomPlanet {
-
-  }
   .person {
     margin-top: 3rem;
   }

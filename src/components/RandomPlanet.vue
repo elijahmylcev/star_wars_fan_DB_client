@@ -1,20 +1,20 @@
 <template>
     <div class="random-planet jumbotron rounded">
-        <img class="planet-image" :src='adress' alt="img"/>
+        <img class="planet-image" :src='planet.adress' alt="img"/>
         <div>
-          <h4 class="title">{{name}}</h4>
+          <h4 class="title">{{planet.name}}</h4>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <span class="term">Population:</span>
-              <span>{{population}}</span>
+              <span>{{planet.population}}</span>
             </li>
             <li class="list-group-item">
               <span class="term">Rotation Period:</span>
-              <span>{{rotation_period}}</span>
+              <span>{{planet.rotation_period}}</span>
             </li>
             <li class="list-group-item">
               <span class="term">Diameter:</span>
-              <span>{{diameter}}</span>
+              <span>{{planet.diameter}}</span>
             </li>
           </ul>
         </div>
@@ -27,30 +27,26 @@ import SwapiService from '../services/swapi-service';
 export default {
     data() {
         return {
+               planet: {
                 id: null,
-                adress: null,
                 name: null,
                 population: null,
                 rotation_period: null,
-                diameter: null  
+                diameter: null,
+                adress: ''
+               } 
              }
         },
     mounted() {
         setInterval(() => {
             const swap = new SwapiService();
-            // const id = Math.floor(Math.random()*25 + 2);
             // Данное условие связоано с тем, что на https://starwars-visualguide.com/assets/img/planets/${id}.jpg есть не все картинки, которые нужны для списка из SWAPI
             const random = (min, max) => {return Math.floor(Math.random()*(max-min + 1)+ min)}
             const id = random(2, 19);
-            swap.getPlanet(id).then((planet) => {
-                id,
-                this.name = planet.name;
-                this.population = planet.population;
-                this.rotation_period = planet.rotation_period;
-                this.diameter = planet.diameter
-                this.adress = `https://starwars-visualguide.com/assets/img/planets/${id}.jpg`
+            return swap.getPlanet(id).then((planet) => {
+              this.planet = planet;
             })
-        }, 3000);
+        }, 4000);
             
         },
 }
