@@ -1,4 +1,4 @@
-export default class SwapiSevice {
+export default class SwapiService {
 
     _apiBase = 'https://swapi.dev/api';
 
@@ -47,7 +47,7 @@ export default class SwapiSevice {
       return item.url.match(idRegExp)[1];
     }
     // Трансформирую данные, чтобы интегрировать их в компонент
-    _transformPlanet(planet) {
+    _transformPlanet = (planet) => {
       const id = this._extractId(planet);
       return {
         id,
@@ -59,7 +59,7 @@ export default class SwapiSevice {
       }
     }
 
-    _transformStarship(starship) {
+    _transformStarship = (starship) => {
       const id = this._extractId(starship);
       return {
         id,
@@ -75,7 +75,7 @@ export default class SwapiSevice {
       }
     }
 
-    _transformPerson(person) {
+    _transformPerson = (person) => {
       const id = this._extractId(person);
       return {
         id,

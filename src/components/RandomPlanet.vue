@@ -2,7 +2,7 @@
 
     <div class="random-planet jumbotron rounded">
       <Spinner v-if="loading"/>
-      <div v-else class="d-flex">
+      <div v-else-if="loading === false && error === false" class="d-flex">
           <img class="planet-image" :src='planet.adress' alt="img"/>
         <div>
           <h4 class="title">{{planet.name}}</h4>
@@ -22,7 +22,7 @@
           </ul>
         </div>
       </div>
-        
+      <ErrorIndicator v-else-if="error === true" />  
 
       </div>
 
@@ -30,7 +30,10 @@
 
 <script>
 import SwapiService from '../services/swapi-service';
-import Spinner from './Spinner'
+import Spinner from './Spinner';
+import ErrorIndicator from '@/components/ErrorIndicator';
+
+
 export default {
     data() {
         return {
@@ -41,26 +44,37 @@ export default {
                 rotation_period: null,
                 diameter: null,
                 adress: ''
-               } ,
+               },
                loading: true,
+               error: false,
              }
         },
     components: {
-      Spinner
+      Spinner,
+      ErrorIndicator
     },
     mounted() {
-        setInterval(() => {
+        this.interval = setInterval(() => {
             const swap = new SwapiService();
             // Данное условие связоано с тем, что на https://starwars-visualguide.com/assets/img/planets/${id}.jpg есть не все картинки, которые нужны для списка из SWAPI
-            const random = (min, max) => {return Math.floor(Math.random()*(max-min + 1)+ min)}
+            const random = (min, max) => {return Math.floor(Math.random()*(max-min + 1)+ min)};
             const id = random(2, 19);
-            return swap.getPlanet(id).then((planet) => {
+
+            return swap.getPlanet(id).
+            then((planet) => {
               this.planet = planet;
               this.loading = false;
             })
-        }, 4000);
-            
-        },
+            .catch(this.onError);
+        }, 4000); 
+    },
+    methods: {
+      onError() {
+        return this.error = true,
+        this.loading = false;
+      }
+    },
+    
 }
 </script>
 

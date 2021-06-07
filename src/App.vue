@@ -4,14 +4,15 @@
     <RandomPlanet class="mt-5" />
     <div class="person row mb2">
       <div class="col-md-6">
-        <ItemList />
+        <ItemList @onItemSelected="onPersonSelected"/>
       </div>
 
       <div class="col-md-6">
-        <PersonDetails />
+        <PersonDetails :personId="selectedPerson" />
       </div>
     </div>
-    
+
+
   </div>
 </template>
 <script>
@@ -21,13 +22,22 @@
   import PersonDetails from '@/components/PersonDetails.vue'
 
 export default {
+  data() {
+    return {
+      selectedPerson: 6,
+    }
+  },
   components: {
     Header,
     RandomPlanet,
     ItemList,
     PersonDetails,
-
-  }
+  },
+  methods: {
+    onPersonSelected(id) {
+      return this.selectedPerson = id;
+    }
+  },
 }
 </script>
 

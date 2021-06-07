@@ -1,22 +1,22 @@
 <template>
     <div class="person-details card">
         <img class="person-image"
-          src="https://starwars-visualguide.com/assets/img/characters/3.jpg" />
+          :src='person.adress' />
 
         <div class="card-body">
-          <h4>R2-D2</h4>
+          <h4>{{person.name}}</h4>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <span class="term">Gender:</span>
-              <span>male</span>
+              <span>{{person.gender}}</span>
             </li>
             <li class="list-group-item">
               <span class="term">Birth Year:</span>
-              <span>43</span>
+              <span>{{person.birthYear}}</span>
             </li>
             <li class="list-group-item">
-              <span class="term">Eye Color:</span>
-              <span>red</span>
+              <span class="term">Eye Color</span>
+              <span>{{person.eyeColor}}</span>
             </li>
           </ul>
         </div>
@@ -24,8 +24,43 @@
 </template>
 
 <script>
+import SwapiService from '../services/swapi-service'
+
     export default {
-        
+        data() {
+          return {
+            person: {
+              id: null,
+              name: null,
+              gender: null,
+              birthYear: null,
+              eyeColor: null,
+              adress: ''
+            }
+          }
+        },
+        props: {
+          personId: {
+            type: Number,
+          },
+        },
+        mounted () {
+          this.updatePerson();
+        },
+        methods: {
+          updatePerson() {
+            const swap = new SwapiService();
+            const personId = this.$props;
+            // if (!personId) {
+            //   return;
+            // }
+            swap
+              .getPerson(personId)
+              .then((person) => {
+                this.person = person;
+              })
+          }
+        },
     }
 </script>
 
