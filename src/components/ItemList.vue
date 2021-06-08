@@ -1,71 +1,64 @@
 <template>
   <div>
-    <ul class="item-list list-group" v-if="peopleList">
-      <li class="list-group-item" :key="person.id" v-for="person in peopleList" @click="OnItemSelected()">
-        {{person.name}}
+    <Spinner v-if="loading" />
+    <ul v-else class="item-list list-group">
+      <li
+        v-for="item in items"
+        :key="item.id"
+        class="list-group-item"
+        @click="onItemSelected(item)"
+      >
+        {{ item[namingProperty] }}
       </li>
     </ul>
-    <Spinner v-else />
   </div>
-  
 </template>
 
 <script>
-import SwapiService from '../services/swapi-service';
-import Spinner from '@/components/Spinner'
+import Spinner from "@/components/Spinner";
+
 export default {
-    data() {
-      return {
-        peopleList: null,
-        person: {
-          id: null,
-          name: null,
-          gender: null,
-          birthYear: null,
-          eyeColor: null,
-          adress: ''
-        } 
-      }
-    },
-    components: {
-      Spinner,
-    },
-    mounted() {
-      const swap = new SwapiService();
-      swap
-        .getAllPeople()
-        .then((list)=> {
-          this.peopleList = list;
-          return this.renderItems(this.peopleList)
-        })   
-    },
-    methods: {
-      renderItems(arr) {
-        return arr.map((person) => {
-          this.person = person;
-        })
-      },
+  name: "List",
 
-      OnItemSelected() {
-        this.$emit('onItemSelected', this.person.id);
-      }
-    },
-}
+  components: {
+    Spinner,
+  },
 
+  props: {
+    items: {
+      type: Array,
+      default: () => [],
+    },
+    namingProperty: {
+      type: String,
+      default: "name",
+    },
+    loading: {
+      type: Boolean,
+      required: true,
+    },
+  },
+
+  methods: {
+    onItemSelected(item) {
+      this.$emit("on-item-click", item.id);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-    .item-list {
-      margin-bottom: 1rem;
-    }
+.item-list {
+  margin-bottom: 1rem;
+}
 
-    .item-list .list-group-item {
-      cursor: pointer;
-      font-size: 1.3rem;
-    }
+.item-list .list-group-item {
+  cursor: pointer;
+  font-size: 1.3rem;
+}
 
-    .item-list .list-group-item:hover {
-      background-color: #444;
-      color: #00bc8c;
-    }
+.item-list .list-group-item:hover {
+  background-color: #444;
+  color: #00bc8c;
+}
 </style>

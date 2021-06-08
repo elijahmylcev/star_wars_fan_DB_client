@@ -1,67 +1,48 @@
 <template>
-    <div class="person-details card">
-        <img class="person-image"
-          :src='person.adress' />
-
-        <div class="card-body">
-          <h4>{{person.name}}</h4>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <span class="term">Gender:</span>
-              <span>{{person.gender}}</span>
-            </li>
-            <li class="list-group-item">
-              <span class="term">Birth Year:</span>
-              <span>{{person.birthYear}}</span>
-            </li>
-            <li class="list-group-item">
-              <span class="term">Eye Color</span>
-              <span>{{person.eyeColor}}</span>
-            </li>
-          </ul>
-        </div>
-      </div>
+  <Spinner v-if="loading" />
+  <div v-else class="person-details card">
+    <img class="person-image" :src="person.adress" />
+    <div class="card-body">
+      <h4>{{ person.name }}</h4>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <span class="term">Gender:</span>
+          <span>{{ person.gender }}</span>
+        </li>
+        <li class="list-group-item">
+          <span class="term">Birth Year:</span>
+          <span>{{ person.birthYear }}</span>
+        </li>
+        <li class="list-group-item">
+          <span class="term">Eye Color</span>
+          <span>{{ person.eyeColor }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <script>
-import SwapiService from '../services/swapi-service'
+import Spinner from "@/components/Spinner";
 
-    export default {
-        data() {
-          return {
-            person: {
-              id: null,
-              name: null,
-              gender: null,
-              birthYear: null,
-              eyeColor: null,
-              adress: ''
-            }
-          }
-        },
-        props: {
-          personId: {
-            type: Number,
-          },
-        },
-        mounted () {
-          this.updatePerson();
-        },
-        methods: {
-          updatePerson() {
-            const swap = new SwapiService();
-            const personId = this.$props;
-            // if (!personId) {
-            //   return;
-            // }
-            swap
-              .getPerson(personId)
-              .then((person) => {
-                this.person = person;
-              })
-          }
-        },
-    }
+export default {
+  name: "PersonDetails",
+
+  components: {
+    Spinner,
+  },
+
+  props: {
+    person: {
+      type: Object,
+      required: true,
+    },
+    loading: {
+      type: Boolean,
+      required: true,
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -78,7 +59,7 @@ import SwapiService from '../services/swapi-service'
 }
 
 .person-details .list-group-item {
-  padding: .25rem;
+  padding: 0.25rem;
   font-size: 1.2rem;
 }
 
@@ -87,7 +68,7 @@ import SwapiService from '../services/swapi-service'
   justify-content: space-between;
 }
 
-.person-details .list-group-item .term{
-  margin-right: .5rem;
+.person-details .list-group-item .term {
+  margin-right: 0.5rem;
 }
 </style>
