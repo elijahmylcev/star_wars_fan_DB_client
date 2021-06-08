@@ -27,8 +27,12 @@ export default class SwapiService {
     }
 
     async getPlanet(id) {
-      const planet = await this.getResource(`/planets/${id}/`);
-      return this._transformPlanet(planet);
+      try {
+        const planet = await this.getResource(`/planets/${id}/`);
+        return this._transformPlanet(planet);
+      } catch (error) {
+        return {message: 'lol', type:"Error"};
+      }
     }
 
     async getAllStarships() {

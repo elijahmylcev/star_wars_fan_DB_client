@@ -54,24 +54,27 @@ export default {
       ErrorIndicator
     },
     mounted() {
-        this.interval = setInterval(() => {
+        this.interval = setInterval(async () => {
             const swap = new SwapiService();
             // Данное условие связоано с тем, что на https://starwars-visualguide.com/assets/img/planets/${id}.jpg есть не все картинки, которые нужны для списка из SWAPI
             const random = (min, max) => {return Math.floor(Math.random()*(max-min + 1)+ min)};
             const id = random(2, 19);
 
-            return swap.getPlanet(id).
-            then((planet) => {
-              this.planet = planet;
-              this.loading = false;
-            })
-            .catch(this.onError);
+            const result =  await swap.getPlanet(id);
+            if (result.type === 'Error') {
+              return this.onError();
+            }
+            this.planet = result;
+            this.loading = false;
         }, 4000); 
+    },
+    beforeDestroy () {
+      clearInterval(this.interval);
     },
     methods: {
       onError() {
-        return this.error = true,
         this.loading = false;
+        this.error = true;
       }
     },
     
