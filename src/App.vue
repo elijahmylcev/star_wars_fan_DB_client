@@ -9,6 +9,7 @@
           :loading="persons.loading"
           namingProperty="name"
           @on-item-click="onPersonSelect"
+          class="list"
         />
       </div>
 
@@ -62,7 +63,6 @@ export default {
       const person = await this.$swapi.getPerson(id);
       this.selectedPerson.value = person;
       this.selectedPerson.loading = false;
-      console.log(person)
     },
   },
 };
@@ -74,5 +74,8 @@ export default {
   }
   .person {
     margin-top: 3rem;
+  }
+  .col-md-6 {
+    min-height: 380px;
   }
 </style>

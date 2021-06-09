@@ -1,5 +1,4 @@
 <template>
-  <div>
     <Spinner v-if="loading" />
     <ul v-else class="item-list list-group">
       <li
@@ -11,7 +10,6 @@
         {{ item[namingProperty] }}
       </li>
     </ul>
-  </div>
 </template>
 
 <script>

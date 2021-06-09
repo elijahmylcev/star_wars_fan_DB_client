@@ -14,8 +14,16 @@
           <span>{{ person.birthYear }}</span>
         </li>
         <li class="list-group-item">
-          <span class="term">Eye Color</span>
+          <span class="term">Eye Color:</span>
           <span>{{ person.eyeColor }}</span>
+        </li>
+        <li class="list-group-item">
+          <span class="term">Height:</span>
+          <span>{{ person.height }}</span>
+        </li>
+        <li class="list-group-item">
+          <span class="term">Mass:</span>
+          <span>{{ person.mass }}</span>
         </li>
       </ul>
     </div>
