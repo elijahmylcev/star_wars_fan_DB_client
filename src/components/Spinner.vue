@@ -4,7 +4,6 @@
             <li></li>
             <li></li>
             <li></li>
-
         </ul>
 </template>
 
@@ -19,12 +18,12 @@
 		box-sizing: border-box;
 	}
     ul{
-    position: relative;
-	height: 100%;
-	width: 100%;
-	display: block;
-	margin: 0 auto;
-}
+		position: relative;
+		height: 100%;
+		width: 100%;
+		display: block;
+		margin: 0 auto;
+	}
 
 	li{
 		position: absolute;
@@ -68,8 +67,8 @@
 	}
 
 	li:first-child{
-		margin-left: -130px;
-		margin-top: -130px;
+		margin-left: -121px;
+		margin-top: -121px;
 		z-index: 2;
 		width: 240px;
 		height: 240px;

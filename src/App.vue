@@ -68,10 +68,10 @@ export default {
 </script>
 
 <style lang="scss">
-body {
-  padding: 15px 30px;
-}
-.person {
-  margin-top: 3rem;
-}
+  body {
+    padding: 15px 30px;
+  }
+  .person {
+    margin-top: 3rem;
+  }
 </style>
