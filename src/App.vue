@@ -62,6 +62,7 @@ export default {
       const person = await this.$swapi.getPerson(id);
       this.selectedPerson.value = person;
       this.selectedPerson.loading = false;
+      console.log(person)
     },
   },
 };
