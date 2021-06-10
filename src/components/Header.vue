@@ -3,7 +3,7 @@
         <img class="mx-5 logo" src="../assets/fight.png" alt="Img">
         <h3>
             <a href="#/">
-              Fan Star Wars DB
+              Fan SWDB
             </a>
         </h3>
         <ul class="d-flex">
@@ -33,6 +33,8 @@ export default {
     padding-left: 10px;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
 }
 
 .logo {

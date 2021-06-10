@@ -3,7 +3,7 @@
     <ErrorIndicator v-if="error" />
     <template v-else>
       <Spinner v-if="loading" />
-      <div v-else class="d-flex">
+      <div v-else class="d-flex wrapper">
         <img class="planet-image" :src="planet.adress" alt="img" />
         <div>
           <h4 class="title">{{ planet.name }}</h4>
@@ -72,43 +72,71 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.random-planet {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 3rem;
-  border: 5px solid #444;
-  margin-bottom: 2rem;
-  position: relative;
-  min-height: 360px;
-}
+  .wrapper {
+    flex-wrap: wrap;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  .random-planet {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 3rem;
+    border: 5px solid #444;
+    margin-bottom: 2rem;
+    position: relative;
+    min-height: 360px;
+  }
 
-.title {
-  font-size: 3rem;
-}
+  .title {
+    font-size: 3rem;
+  }
 
-.random-planet .planet-image {
-  width: 300px;
-  height: 300px;
-  border-radius: 10px;
-  margin-right: 1rem;
-}
+  .random-planet .planet-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    margin-right: 1rem;
+  }
 
-.random-planet .list-group {
-  margin: 1rem 0 0 1rem;
-}
+  .random-planet .list-group {
+    margin: 1rem 0 0 1rem;
+  }
 
-.random-planet .list-group-item {
-  padding: 1rem;
-  border-radius: 1rem;
-  margin-top: 1rem;
-  display: flex;
-  justify-content: space-between;
-  width: 270px;
-  font-size: 1.2rem;
-}
+  .random-planet .list-group-item {
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    width: 270px;
+    font-size: 1.2rem;
+  }
 
-.random-planet .list-group-item .term {
-  margin-right: 0.5rem;
-}
+  .random-planet .list-group-item .term {
+    margin-right: 0.5rem;
+  }
+  @media screen and (max-width: 480px) {
+    .random-planet {
+      padding: 1rem;
+      border: 2px solid #444;
+    }
+    .random-planet .planet-image {
+      width: 200px;
+      height: 200px;
+    }
+    .title {
+      font-size: 2rem;
+    }
+    .random-planet .list-group {
+      margin: 0.5rem 0 0 0.5rem;
+    }
+    .random-planet .list-group-item {
+      padding: 1rem;
+      border-radius: 1rem;
+      width: 200px;
+      font-size: 0.8rem;
+    }
+  }
 </style>

@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <Header />
+    <Header class="mb-5 head"/>
     <RandomPlanet class="mt-5" />
     <div class="person row mb2">
-      <div class="col-md-6">
+      <div class="col-md-6 col-xs-12 col-sm-12">
         <ItemList
           :items="persons.value"
           :loading="persons.loading"
@@ -13,7 +13,7 @@
         />
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-6 col-xs-12 col-sm-12">
         <PersonDetails
           :person="selectedPerson.value"
           :loading="selectedPerson.loading"
