@@ -2,7 +2,7 @@
   <div class="home">
     <RandomPlanet class="mt-5" />
     <div class="person row mb2">
-      <div class="col-md-6">
+      <div class="col-md-6 col-xs-12 col-sm-12">
         <ItemList
           :items="persons.value"
           :loading="persons.loading"
@@ -12,7 +12,7 @@
         />
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-6 col-xs-12 col-sm-12">
         <ItemDetails
           :item="selectedPerson.value"
           :loading="selectedPerson.loading"
@@ -39,6 +39,10 @@
               <li class="list-group-item">
                 <span class="term">Mass:</span>
                 <span>{{ item.mass }}</span>
+              </li>
+              <li class="list-group-item">
+                <span class="term">Homeworld:</span>
+                <span>{{ personHomeworld.name }}</span>
               </li>
             </ul>
           </template>
@@ -74,7 +78,7 @@ export default {
         loading: true,
       },
 
-      personHomeworld: null,
+      personHomeworld: '',
     };
   },
 

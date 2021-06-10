@@ -1,25 +1,4 @@
 <template>
-<<<<<<< HEAD
-    <div class="header d-flex">
-        <img class="mx-5 logo" src="../assets/fight.png" alt="Img">
-        <h3>
-            <a href="#/">
-              Fan SWDB
-            </a>
-        </h3>
-        <ul class="d-flex">
-            <li>
-                <a class="link-route" href="#/people">People</a>
-            </li>
-            <li>
-                <a class="link-route" href="#/planets">Planets</a>
-            </li>
-            <li>
-                <a class="link-route" href="#/starships">Starships</a>
-            </li>
-        </ul>
-    </div>
-=======
   <div class="header d-flex">
     <img class="mx-5 logo" src="../assets/fight.png" alt="Img" />
     <h3>
@@ -39,7 +18,6 @@
       </li>
     </ul>
   </div>
->>>>>>> e36918747a46b79ef077b339096abfef7321a7f0
 </template>
 
 <script>
@@ -48,21 +26,11 @@ export default {};
 
 <style lang="scss" scoped>
 .header {
-<<<<<<< HEAD
-    height: 100px;
-    margin-top: .5rem;
-    padding-left: 10px;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
-=======
   height: 100px;
   margin-top: 0.5rem;
   padding-left: 10px;
   justify-content: center;
   align-items: center;
->>>>>>> e36918747a46b79ef077b339096abfef7321a7f0
 }
 
 .logo {
