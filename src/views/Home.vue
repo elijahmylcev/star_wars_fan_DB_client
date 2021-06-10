@@ -1,12 +1,80 @@
 <template>
   <div class="home">
-    
+    <RandomPlanet class="mt-5" />
+    <div class="person row mb2">
+      <div class="col-md-6">
+        <ItemList
+          :items="persons.value"
+          :loading="persons.loading"
+          namingProperty="name"
+          @on-item-click="onPersonSelect"
+          class="list"
+        />
+      </div>
+
+      <div class="col-md-6">
+        <PersonDetails
+          :person="selectedPerson.value"
+          :loading="selectedPerson.loading"
+        />
+        {{ personHomeworld }}
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import RandomPlanet from "@/components/RandomPlanet.vue";
+import ItemList from "@/components/ItemList.vue";
+import PersonDetails from "@/components/PersonDetails.vue";
 
 export default {
-  
-}
+  name: "Home",
+
+  components: {
+    RandomPlanet,
+    ItemList,
+    PersonDetails,
+  },
+
+  data() {
+    return {
+      persons: {
+        value: [],
+        loading: true,
+      },
+
+      selectedPerson: {
+        value: {},
+        loading: true,
+      },
+
+      personHomeworld: null,
+    };
+  },
+
+  async mounted() {
+    const list = await this.$swapi.getAllPeople();
+    this.persons.value = [...list];
+    this.persons.loading = false;
+  },
+
+  methods: {
+    async onPersonSelect(id) {
+      const person = await this.$swapi.getPerson(id);
+      this.personHomeworld = await this.$swapi.getPlanet(person.homeworld);
+      this.selectedPerson.value = person;
+      this.selectedPerson.loading = false;
+    },
+  },
+};
 </script>
+
+<style lang="scss" scoped>
+.person {
+  margin-top: 3rem;
+}
+.col-md-6 {
+  min-height: 380px;
+}
+</style>
