@@ -13,11 +13,36 @@
       </div>
 
       <div class="col-md-6">
-        <PersonDetails
-          :person="selectedPerson.value"
+        <ItemDetails
+          :item="selectedPerson.value"
           :loading="selectedPerson.loading"
-        />
-        {{ personHomeworld }}
+        >
+          <template #content="{ item }">
+            <h4>{{ item.name }}</h4>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <span class="term">Gender:</span>
+                <span>{{ item.gender }}</span>
+              </li>
+              <li class="list-group-item">
+                <span class="term">Birth Year:</span>
+                <span>{{ item.birthYear }}</span>
+              </li>
+              <li class="list-group-item">
+                <span class="term">Eye Color:</span>
+                <span>{{ item.eyeColor }}</span>
+              </li>
+              <li class="list-group-item">
+                <span class="term">Height:</span>
+                <span>{{ item.height }}</span>
+              </li>
+              <li class="list-group-item">
+                <span class="term">Mass:</span>
+                <span>{{ item.mass }}</span>
+              </li>
+            </ul>
+          </template>
+        </ItemDetails>
       </div>
     </div>
   </div>
@@ -26,7 +51,7 @@
 <script>
 import RandomPlanet from "@/components/RandomPlanet.vue";
 import ItemList from "@/components/ItemList.vue";
-import PersonDetails from "@/components/PersonDetails.vue";
+import ItemDetails from "@/components/ItemDetails.vue";
 
 export default {
   name: "Home",
@@ -34,7 +59,7 @@ export default {
   components: {
     RandomPlanet,
     ItemList,
-    PersonDetails,
+    ItemDetails,
   },
 
   data() {
@@ -76,5 +101,31 @@ export default {
 }
 .col-md-6 {
   min-height: 380px;
+}
+
+.item-details {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+}
+
+.item-details .item-image {
+  width: 30%;
+  height: 30%;
+  border-radius: 10px;
+}
+
+.item-details .list-group-item {
+  padding: 0.25rem;
+  font-size: 1.2rem;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-details .list-group-item .term {
+  margin-right: 0.5rem;
 }
 </style>
