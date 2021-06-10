@@ -81,6 +81,8 @@ export default class SwapiService {
 
   _transformPerson = (person) => {
     const id = this._extractId(person);
+    const homeworldUrl = person.homeworld.split("/");
+    const homeworldId = homeworldUrl[homeworldUrl.length - 2];
     return {
       id,
       name: person.name,
@@ -89,6 +91,7 @@ export default class SwapiService {
       eyeColor: person.eye_color,
       height: person.height,
       mass: person.mass,
+      homeworld: homeworldId,
       adress: `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`,
     };
   };

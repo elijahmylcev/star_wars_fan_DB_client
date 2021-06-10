@@ -18,6 +18,7 @@
           :person="selectedPerson.value"
           :loading="selectedPerson.loading"
         />
+        {{ personHomeworld }}
       </div>
     </div>
   </div>
@@ -49,6 +50,8 @@ export default {
         value: {},
         loading: true,
       },
+
+      personHomeworld: null,
     };
   },
 
@@ -61,6 +64,7 @@ export default {
   methods: {
     async onPersonSelect(id) {
       const person = await this.$swapi.getPerson(id);
+      this.personHomeworld = await this.$swapi.getPlanet(person.homeworld);
       this.selectedPerson.value = person;
       this.selectedPerson.loading = false;
     },
@@ -69,13 +73,13 @@ export default {
 </script>
 
 <style lang="scss">
-  body {
-    padding: 15px 30px;
-  }
-  .person {
-    margin-top: 3rem;
-  }
-  .col-md-6 {
-    min-height: 380px;
-  }
+body {
+  padding: 15px 30px;
+}
+.person {
+  margin-top: 3rem;
+}
+.col-md-6 {
+  min-height: 380px;
+}
 </style>
