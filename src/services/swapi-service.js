@@ -15,6 +15,11 @@ export default class SwapiService {
     return res.results.map(this._transformPerson);
   }
 
+  async getAllFilms() {
+    const res = await this.getResource(`/films/`);
+    return res;
+  }
+
   async getPerson(id) {
     const person = await this.getResource(`/people/${id}/`);
     return this._transformPerson(person);
