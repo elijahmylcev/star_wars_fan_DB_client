@@ -74,6 +74,7 @@ export default {
 <style lang="scss" scoped>
   .wrapper {
     flex-wrap: wrap;
+    justify-content: center;
   }
   * {
     box-sizing: border-box;
