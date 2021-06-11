@@ -15,15 +15,15 @@ const routes = [
     name: "Starships",
     component: () => import("@/views/Starships.vue"),
   },
+  // {
+  //   path: "/planets",
+  //   name: "Planets",
+  //   component: () => import("@/views/Planets.vue"),
+  // },
   {
-    path: "/planets",
-    name: "Planets",
-    component: () => import("@/views/Planets.vue"),
-  },
-  {
-    path: "/people",
-    name: "People",
-    component: () => import("@/views/People.vue"),
+    path: "/films",
+    name: "Films",
+    component: () => import("@/views/Films.vue"),
   },
 ];
 

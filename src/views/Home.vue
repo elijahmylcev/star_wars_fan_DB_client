@@ -110,7 +110,7 @@ export default {
 .item-details {
   display: flex;
   flex-direction: row;
-  padding: 1rem;
+  padding: 0.2rem;
 }
 
 .item-details .item-image {

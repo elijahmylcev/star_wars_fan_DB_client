@@ -1,15 +1,18 @@
 <template>
-  <div class="starships-page pt-3 d-flex">
-    <List
+  <div class="row pt-3 d-flex root">
+    <div class="col-md-6 col-xs-12 list">
+      <List
       :items="starships.value"
       :loading="starships.loading"
-      class="col-md-4 col-sm-12 mx-2 listStarship"
+      class=" listStarship"
       @on-item-click="getStarship"
     />
-    <ItemDetails
+    </div>
+    <div class="col-md-6 col-xs-12 details">
+          <ItemDetails
       :item="selectedStarship.value"
       :loading="selectedStarship.loading"
-      class="col-md-8 col-sm-12 itemDet"
+      class=" itemDet"
     >
       <template #image="{ image }">
         <ErrorIndicator v-if="selectedStarship.value.hasBrokenImage" />
@@ -48,6 +51,8 @@
         </ul>
       </template>
     </ItemDetails>
+
+    </div>
   </div>
 </template>
 
@@ -101,30 +106,44 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .list .details {
+    min-height: 380px;
+  }
+  .root {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
   .itemDet {
-    margin: 0 auto;
-    max-width: 800px;
-    padding: 10px;
     &__img {
-      max-width: 600px;
+      width: 90%;
       display: block;
-      margin: 15px auto 15px;
+      margin: 0 auto;
     }
   }
 
   .listStarshipsDetails {
+      padding: 0;
       list-style-type: none;
       display: block;
       margin: 0 auto;
-      max-width: 500px;
+      // max-width: 500px;
 		&__item {
       display: flex;
       justify-content: space-between;
-      font-size: 1.2rem;
+      font-size: 1rem;
       &_descr {
         text-align: right;
       }
 		}
+}
+@media (max-width: 768px) {
+  .details {
+    min-height: 380px;
+  }
+  .spinn {
+    top: 195px;
+  }
 }
 
 </style>

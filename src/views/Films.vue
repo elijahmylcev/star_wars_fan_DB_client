@@ -1,10 +1,10 @@
 <template>
   <div class="d-flex row list" style="align-items: center; flex-wrap: wrap; margin: 15px auto">
-    <div v-for="item,i in list.results" :key="i" class="card mx-3 my-5" style="width: 18rem;">
+    <div v-for="item,i in list.results" :key="i" class="card mx-3 my-5" style="width: 24rem;">
       <img class="card-img-top" :src="adress[i]" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">{{item.title}}</h5>
-        <p class="card-text">{{item.opening_crawl.slice(0, 40)}}</p>
+        <p class="card-text">{{item.opening_crawl.slice(0, 90)}}</p>
         <ul>
           <li>
             <span>Director:</span>
@@ -62,8 +62,13 @@
     display: flex;
     justify-content: space-between;
     width: 90%;
+    margin-bottom: 10px;
+    border-bottom: 0.5px solid #00bc8c;
   }
   .descr {
     text-align: right;
+  }
+  .card-title {
+    margin-bottom: 20px;
   }
 </style>

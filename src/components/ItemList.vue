@@ -1,5 +1,6 @@
 <template>
-    <Spinner v-if="loading" />
+  <div style="height: content">
+    <Spinner class="spinn" v-if="loading" />
     <ul v-else class="item-list list-group">
       <li
         v-for="item in items"
@@ -10,6 +11,8 @@
         {{ item[namingProperty] }}
       </li>
     </ul>
+  </div>
+    
 </template>
 
 <script>
@@ -49,6 +52,9 @@ export default {
 .item-list {
   margin-bottom: 1rem;
 }
+// .spinn {
+//   top: 190px;
+// }
 
 .item-list .list-group-item {
   cursor: pointer;

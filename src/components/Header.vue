@@ -6,17 +6,17 @@
         Fan Star Wars DB
       </router-link>
     </h3>
-    <ul class="d-flex">
-      <li>
-        <router-link class="link-route" to="/people">People</router-link>
-      </li>
-      <li>
+    <!-- <ul class="d-flex">
+      <li> -->
+        <router-link class="link-route" to="/films">Films</router-link>
+      <!-- </li> -->
+      <!-- <li>
         <router-link class="link-route" to="/planets">Planets</router-link>
-      </li>
-      <li>
+      </li> -->
+      <!-- <li> -->
         <router-link class="link-route" to="/starships">Starships</router-link>
-      </li>
-    </ul>
+      <!-- </li> -->
+    <!-- </ul> -->
   </div>
 </template>
 
@@ -25,12 +25,14 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+
 .header {
-  height: 100px;
+  min-height: 100px;
   margin-top: 0.5rem;
   padding-left: 10px;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -57,23 +59,14 @@ export default {};
   }
 }
 
-ul {
-  align-items: flex-start;
-}
-
-.header ul li {
-  list-style: none;
+.link-route {
+  text-decoration: none;
+  display: block;
   margin-right: 2rem;
+  column-gap: 1.5rem;
   padding: 0.5rem 1rem;
   border-radius: 5px;
   font-size: 1.5rem;
-}
-
-.link-route {
-  text-decoration: none;
-}
-
-.header ul li:hover {
   background-color: #444;
 }
 
@@ -84,6 +77,7 @@ ul {
 .header h3 a {
   color: white;
   text-decoration: none;
+  margin-right: 2rem;
 }
 
 .header h3 a:hover {
