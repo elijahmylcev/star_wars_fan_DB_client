@@ -15,11 +15,6 @@ const routes = [
     name: "Starships",
     component: () => import("@/views/Starships.vue"),
   },
-  // {
-  //   path: "/planets",
-  //   name: "Planets",
-  //   component: () => import("@/views/Planets.vue"),
-  // },
   {
     path: "/films",
     name: "Films",

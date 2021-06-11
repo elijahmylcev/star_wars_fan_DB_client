@@ -2,7 +2,7 @@
   <div class="header d-flex">
     <img class="mx-5 logo" src="../assets/fight.png" alt="Img" />
     <h3>
-      <router-link to="/">
+      <router-link to="/home">
         Fan Star Wars DB
       </router-link>
     </h3>
