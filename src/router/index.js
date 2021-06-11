@@ -1,8 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "@/views/Home";
-import Starships from '@/views/Starships';
-import Films from '@/views/Films.vue'
 
 Vue.use(VueRouter);
 
@@ -15,17 +13,17 @@ const routes = [
   {
     path: "/starships",
     name: "Starships",
-    component: Starships,
+    component: () => import("@/views/Starships.vue"),
   },
   {
     path: "/films",
     name: "Films",
-    component: Films,
+    component: () => import("@/views/Films.vue"),
   },
 ];
 
 const router = new VueRouter({
-  // mode: "history",
+  mode: "history",
   routes,
 });
 

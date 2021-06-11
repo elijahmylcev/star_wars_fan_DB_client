@@ -6,17 +6,11 @@
         Fan Star Wars DB
       </router-link>
     </h3>
-    <!-- <ul class="d-flex">
-      <li> -->
+
         <router-link class="link-route" to="/films">Films</router-link>
-      <!-- </li> -->
-      <!-- <li>
-        <router-link class="link-route" to="/planets">Planets</router-link>
-      </li> -->
-      <!-- <li> -->
+
         <router-link class="link-route" to="/starships">Starships</router-link>
-      <!-- </li> -->
-    <!-- </ul> -->
+
   </div>
 </template>
 
