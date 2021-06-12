@@ -52,9 +52,9 @@ export default {
 .item-list {
   margin-bottom: 1rem;
 }
-// .spinn {
-//   top: 190px;
-// }
+.spinn {
+  height: 400px
+}
 
 .item-list .list-group-item {
   cursor: pointer;
